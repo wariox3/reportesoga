@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 6.3.0  -->
+<!-- 2016-07-10T11:20:12 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pendiente_facturar" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1368e654-e6f5-47e8-b61c-9ab8d5add967">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="bdseracis"/>
+	<queryString>
+		<![CDATA[SELECT bdseracis.sql_tur_pedido_pendiente_facturar.*
+FROM bdseracis.sql_tur_pedido_pendiente_facturar]]>
+	</queryString>
+	<field name="codigo_pedido_detalle_pk" class="java.lang.Integer"/>
+	<field name="codigo_pedido_fk" class="java.lang.Integer"/>
+	<field name="tipo_pedido" class="java.lang.String"/>
+	<field name="numero" class="java.lang.Integer"/>
+	<field name="nit" class="java.lang.String"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="fecha_programacion" class="java.sql.Date"/>
+	<field name="vr_total_detalle_pendiente" class="java.lang.Double"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{cliente}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="3" width="470" height="17" uuid="6c765b7f-2087-41cf-a43b-cf68139bb7e8"/>
+					<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="5" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="8" width="324" height="30" uuid="f871ffe9-3549-4f70-8acc-b81e252afef0"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEDIDOS PENDIENTES POR FACTURAR]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<staticText>
+				<reportElement x="0" y="14" width="80" height="18" uuid="15ca8554-ddb6-44aa-b79b-8952c4911d25"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="14" width="100" height="18" uuid="ec27f974-fc3d-4a27-b0e5-8d4ef7b06be5"/>
+				<text><![CDATA[NUMERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="14" width="100" height="18" uuid="5936d038-7f19-4f86-9252-10a51b9bb3f4"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[PENDIENTE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="ContainerHeight" x="0" y="0" width="80" height="15" uuid="6cd4277e-9ec8-4432-8c6e-929ba3063014">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy/MM/dd").format($F{fecha_programacion})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="ContainerHeight" x="80" y="0" width="100" height="15" uuid="fe738ffa-a527-4314-a6c9-0e19e10c4096">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="100" height="15" uuid="0e25f047-cca1-445c-b0a2-e51a75be8bd4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new DecimalFormat("###,###,##0").format($F{vr_total_detalle_pendiente})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
